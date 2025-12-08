@@ -22,4 +22,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./
-      - run: mcabal install -r nanospec
+      - run: mcabal -r install nanospec
