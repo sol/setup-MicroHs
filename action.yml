@@ -1,0 +1,17 @@
+name: Setup MicroHs
+author: Simone Hengel
+description: Install a nightly build of MicroHs to `$HOME/.mcabal`
+
+branding:
+  icon: cpu
+  color: white
+
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      name: Install MicroHs
+      run: |
+        src=https://github.com/sol/setup-MicroHs/releases/download/nightly/MicroHs-$RUNNER_OS-$RUNNER_ARCH.tar.gz
+        curl -sSL "$src" | tar -xz -C "$HOME"
+        echo "$HOME/.mcabal/bin" >> "$GITHUB_PATH"

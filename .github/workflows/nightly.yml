@@ -1,0 +1,48 @@
+name: nightly
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: 23 23 * * *
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          # - windows-latest
+          - macos-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: clone repository
+        uses: actions/checkout@v4
+      - name: clone MicroHs repository
+        uses: actions/checkout@v4
+        with:
+          repository: augustss/MicroHs
+          path: mhs
+      - run: cd mhs && make minstall
+      - name: publish binaries
+        run: |
+          dst=MicroHs-$RUNNER_OS-$RUNNER_ARCH.tar.gz
+          tar -czf "$dst" -C "$HOME" .mcabal
+          gh release create nightly --prerelease || (git tag nightly -f && git push --tags -f)
+          gh release upload nightly "$dst" --clobber
+        if: github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
