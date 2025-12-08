@@ -30,5 +30,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: sol/setup-MicroHs@nightly
-      - run: mcabal -r install nanospec
+      - run: mcabal -r build
 ```
