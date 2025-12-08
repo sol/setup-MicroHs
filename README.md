@@ -1,4 +1,4 @@
-# A GitHub Actions to install MicroHs
+# A GitHub Actions that installs MicroHs
 
 This action provides `mcs`, `mcabal`, `cpphs`, and MicroHs compatible libraries.
 
