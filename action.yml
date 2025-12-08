@@ -13,5 +13,5 @@ runs:
       name: Install MicroHs
       run: |
         src=https://github.com/sol/setup-MicroHs/releases/download/nightly/MicroHs-$RUNNER_OS-$RUNNER_ARCH.tar.gz
-        curl -sSL "$stc" | tar -xz -C "$HOME"
+        curl -sSL "$src" | tar -xz -C "$HOME"
         echo "$HOME/.mcabal/bin" >> "$GITHUB_PATH"
