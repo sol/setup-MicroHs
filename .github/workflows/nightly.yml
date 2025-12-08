@@ -29,12 +29,17 @@ jobs:
     # runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: env
-      - run: echo $ImageOS
+      - run: MicroHs-$RUNNER_OS-$RUNNER_ARCH.tar.gz
       - run: make minstall
+
+      - uses: actions/checkout@v4
+        with:
+          repository: augustss/MicroHs
+          path: mhs
+      - run: cd mhs && make minstall
       - name: publish binaries
         run: |
-          dst=MicroHs-linux-x86_64.tar.gz
+          dst=MicroHs-$RUNNER_OS-$RUNNER_ARCH.tar.gz
           tar -czf "$dst" -C "$HOME" .mcabal
           gh release create nightly --prerelease || (git tag nightly -f && git push --tags -f)
           gh release upload nightly "$dst" --clobber
