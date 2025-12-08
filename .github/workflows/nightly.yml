@@ -19,6 +19,7 @@ on:
 jobs:
   build:
     strategy:
+      fail-fast: true
       matrix:
         os:
           - ubuntu-latest
