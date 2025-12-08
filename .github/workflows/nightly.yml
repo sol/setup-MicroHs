@@ -18,11 +18,18 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+    runs-on: ${{ matrix.os }}
+    # runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: env
-      - run: echo $RUNNER_IMAGE
+      - run: echo $ImageOS
       - run: make minstall
       - name: publish binaries
         run: |
