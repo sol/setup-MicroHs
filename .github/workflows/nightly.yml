@@ -37,6 +37,9 @@ jobs:
           path: mhs
       - run: echo "$HOME/.mcabal/bin" >> "$GITHUB_PATH"
       - run: cd mhs && make minstall && make -f Makefile.packages
+      - run: mcabal install "--git=https://github.com/hspec/hspec --branch=micro-hs" --dir=hspec-core hspec-core
+      - run: mcabal install hspec-discover
+      - run: mcabal install "--git=https://github.com/hspec/hspec --branch=micro-hs" hspec
       - name: publish binaries
         run: |
           dst=MicroHs-$RUNNER_OS-$RUNNER_ARCH.tar.gz
