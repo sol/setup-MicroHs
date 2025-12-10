@@ -1,6 +1,4 @@
-<p align="center"><img width="340" height="220" alt="MicorHs" src="https://github.com/user-attachments/assets/dd1077dd-5e06-42a1-8444-7db917a634f3" />
-  
-</p>
+<p align="center"><img width="340" height="220" alt="MicorHs" src="https://github.com/user-attachments/assets/da0d8d9e-b823-4111-8fea-a2a81b6163bd" /></p>
 
 # A GitHub Actions that installs MicroHs
 
