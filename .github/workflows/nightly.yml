@@ -37,6 +37,15 @@ jobs:
           path: mhs
       - run: echo "$HOME/.mcabal/bin" >> "$GITHUB_PATH"
       - run: cd mhs && make minstall && make -f Makefile.packages
+
+      # for `mcabal test` support
+      # https://github.com/augustss/MicroCabal/pull/26
+      - uses: actions/checkout@v4
+        with:
+          repository: sol/MicroCabal
+          path: MicroCabal
+      - run: cd MicroCabal && mcabal install
+
       - run: mcabal install "--git=https://github.com/hspec/hspec --branch=micro-hs" --dir=hspec-core hspec-core
       - run: mcabal install hspec-discover
       - run: mcabal install "--git=https://github.com/hspec/hspec --branch=micro-hs" hspec
