@@ -20,5 +20,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: sol/setup-MicroHs@nightly
-      - run: mcabal -r build
+      - run: mcabal -r test
 ```
