@@ -1,3 +1,7 @@
+<p align="center"><img width="340" height="220" alt="MicorHs" src="https://github.com/user-attachments/assets/dd1077dd-5e06-42a1-8444-7db917a634f3" />
+  
+</p>
+
 # A GitHub Actions that installs MicroHs
 
 This action provides `mcs`, `mcabal`, `cpphs`, and MicroHs compatible libraries.
