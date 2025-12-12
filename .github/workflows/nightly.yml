@@ -46,9 +46,9 @@ jobs:
           path: MicroCabal
       - run: cd MicroCabal && mcabal install
 
-      - run: mcabal install "--git=https://github.com/hspec/hspec --branch=micro-hs" --dir=hspec-core hspec-core
-      - run: mcabal install hspec-discover
-      - run: mcabal install "--git=https://github.com/hspec/hspec --branch=micro-hs" hspec
+      - run: mcabal install "--git=https://github.com/hspec/hspec" --dir=hspec-core hspec-core
+      - run: mcabal install "--git=https://github.com/hspec/hspec" --dir=hspec-discover hspec-discover
+      - run: mcabal install "--git=https://github.com/hspec/hspec" hspec
       - name: publish binaries
         run: |
           dst=MicroHs-$RUNNER_OS-$RUNNER_ARCH.tar.gz
