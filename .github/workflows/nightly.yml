@@ -29,17 +29,14 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: clone MicroHs repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: augustss/MicroHs
           path: mhs
       - run: echo "$HOME/.mcabal/bin" >> "$GITHUB_PATH"
       - run: cd mhs && make minstall && make -f Makefile.packages
-      - run: mcabal install hspec-core
-      - run: mcabal install hspec-discover
-      - run: mcabal install hspec
       - name: publish binaries
         run: |
           dst=MicroHs-$RUNNER_OS-$RUNNER_ARCH.tar.gz
